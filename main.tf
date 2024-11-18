@@ -5,8 +5,13 @@ terraform {
             version = "5.74.0"
         }
     }
+    #Configure the abckend to store the Terraform state file in an S3 Bucket
+    backend "s3" {
+        bucket = "terraform-state-aidan-taggart"
+        key = "terraform.tfstate"
+        region = "us-east-1"
+    }
 }
-
 provider "aws"{
     #Confguration options
     region = "us-east-1"
