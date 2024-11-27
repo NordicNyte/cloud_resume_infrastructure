@@ -26,7 +26,6 @@ jobs:
           terraform_version: 1.9.8
 
       - name: Terraform Init
-        working-directory: ./terraform
         run: terraform init
 
       - name: Terraform Validate
