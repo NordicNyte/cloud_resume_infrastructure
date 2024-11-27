@@ -15,9 +15,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
+        with:
+          path: /home/runner/work/cloud_resume_infrastructure
 
       - name: List current directory
+        working-directory: /home/runner/work/cloud_resume_infrastructure
         run: ls -R
 
       - name: Setup Terraform
@@ -26,15 +29,17 @@ jobs:
           terraform_version: 1.9.8
 
       - name: Terraform Init
+        working-directory: /home/runner/work/cloud_resume_infrastructure
         run: terraform init
 
       - name: Terraform Validate
+        working-directory: /home/runner/work/cloud_resume_infrastructure
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: ./terraform
+        working-directory: /home/runner/work/cloud_resume_infrastructure
         run: terraform plan
 
       - name: Terraform Apply
-        working-directory: ./terraform
+        working-directory: /home/runner/work/cloud_resume_infrastructure
         run: terraform apply -auto-approve
